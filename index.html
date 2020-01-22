@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div> <button type="button" class="btn btn-primary jus">Get Chuck Joke</button>
+    <div class="joke"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          $.get("https://api.chucknorris.io/jokes/random", function (data, status) {
+            $(".joke").empty();
+            $("<img src='" + data.icon_url + "'>").appendTo(".joke");
+            $("<p>" + data.created_at + "</p>").appendTo(".joke");
+            $("<p>" + data.value + "</p>").appendTo(".joke");
+          });
+        });
+      });
+    </script>
+</body>
+
+</html>
